@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="es-MX" data-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <!-- Tema y estado de carga: se resuelve antes del primer pintado para evitar parpadeos -->
+    <script>
+        (function () {
+            var d = document.documentElement;
+            try {
+                var t = localStorage.getItem('sic-theme');
+                if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+            } catch (e) {}
+            d.classList.add('js', 'is-loading');
+            // Red de seguridad: si el script principal no arranca, nunca dejamos al usuario atrapado en el preloader
+            setTimeout(function () {
+                if (window.__sicBooted) return;
+                var p = document.getElementById('preloader');
+                if (p) p.style.display = 'none';
+                d.classList.remove('is-loading');
+            }, 9000);
+        })();
+    </script>
+
+    <!-- SEO base -->
+    <title>SIC | Consultoría de procesos y software a la medida</title>
+    <meta name="description" content="Convertimos tus procesos en software a la medida: ERP, CRM e integraciones para el sector inmobiliario, más WishPMS, el módulo hotelero. Agenda tu diagnóstico.">
+    <meta name="keywords" content="consultoría de procesos, software a la medida, ERP a la medida, CRM inmobiliario, sistemas integrales, integraciones API, software inmobiliario, PMS hotelero, WishPMS, Guadalajara">
+    <meta name="author" content="SIC Sistemas Integrales y Consultoría">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://integracon.com.mx/">
+    <meta name="theme-color" content="#061211">
+    <meta name="color-scheme" content="dark light">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="SIC Sistemas Integrales y Consultoría">
+    <meta property="og:title" content="SIC | Consultoría de procesos y software a la medida">
+    <meta property="og:description" content="Primero tu proceso, después la tecnología. ERP, CRM e integraciones a la medida, y WishPMS para hoteles.">
+    <meta property="og:url" content="https://integracon.com.mx/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&h=630&auto=format&fit=crop">
+    <meta property="og:image:alt" content="Pantalla con tableros de analítica de un sistema empresarial">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Tipografía: Bricolage Grotesque (display), Geist (texto), Geist Mono (datos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+
+    <!-- Iconos: Phosphor (una sola familia en todo el sitio) -->
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Datos estructurados -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://integracon.com.mx/#organization",
+          "name": "SIC Sistemas Integrales y Consultoría",
+          "url": "https://integracon.com.mx/",
+          "description": "Consultoría de procesos y desarrollo de software a la medida: ERP, CRM e integraciones para el sector inmobiliario y empresas con procesos complejos.",
+          "areaServed": { "@type": "Country", "name": "México" },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Guadalajara",
+            "addressRegion": "Jalisco",
+            "addressCountry": "MX"
+          },
+          "knowsAbout": [
+            "Análisis y definición de procesos",
+            "Desarrollo de software a la medida",
+            "ERP y CRM",
+            "Integraciones y APIs",
+            "Software para el sector inmobiliario",
+            "PMS hotelero"
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "WishPMS",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "description": "Módulo hotelero de SIC para gestionar reservas, canales de venta, motor de reservas, housekeeping, punto de venta, facturación y reportes.",
+          "publisher": { "@id": "https://integracon.com.mx/#organization" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué hace SIC?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Somos una consultoría que combina análisis de procesos con desarrollo de software. Mapeamos cómo opera tu empresa, optimizamos los procesos y los convertimos en sistemas a la medida." }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Por qué empiezan por los procesos y no por el software?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Porque automatizar un proceso confuso solo multiplica el desorden. Primero lo ordenamos y lo medimos; después la tecnología se construye sobre bases sólidas." }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Venden un sistema estándar o lo hacen a la medida?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Desarrollamos ERP y CRM propios y los adaptamos a tu operación. Solo incluimos las funciones que necesitas, sin módulos de relleno." }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Se pueden conectar con las herramientas que ya usamos?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Sí. Integramos gestión documental, plataformas administrativas, herramientas de BI y aplicaciones de terceros mediante APIs existentes o personalizadas." }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Solo trabajan con el sector inmobiliario?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Nuestra especialidad es la cadena inmobiliaria: construcción, cobranza, administración y comercialización. También apoyamos a empresas con procesos complejos en otros giros." }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué es WishPMS y para quién es?",
+              "acceptedAnswer": { "@type": "Answer", "text": "WishPMS es nuestro módulo hotelero para gestionar reservas, canales de venta, pagos y operación. Está pensado para hoteles, hostales, apartahoteles, glampings y cabañas." }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo empezamos?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Con una llamada de diagnóstico sin compromiso. Nos cuentas cómo operas hoy y te decimos con claridad si podemos ayudarte y por dónde comenzar." }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body id="top">
+
+    <!-- Sprite: marca SIC (nodo central conectado a tres módulos). Sustituir por el logotipo oficial cuando esté disponible -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="sic-mark" viewBox="0 0 32 32">
+            <path d="M16 16 L16 5 M16 16 L6.5 21.5 M16 16 L25.5 21.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="16" cy="16" r="4" fill="currentColor"/>
+            <circle cx="16" cy="5" r="2.7" fill="currentColor"/>
+            <circle cx="6.5" cy="21.5" r="2.7" fill="currentColor"/>
+            <circle cx="25.5" cy="21.5" r="2.7" fill="currentColor"/>
+        </symbol>
+    </svg>
+
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <!-- ============================================================
+         PRELOADER: spinner orbital con contador y cortina dividida
+    ============================================================ -->
+    <div class="preloader" id="preloader" role="status" aria-live="polite" aria-label="Cargando el sitio">
+        <div class="pre-half pre-half--top"></div>
+        <div class="pre-half pre-half--bottom"></div>
+
+        <div class="pre-core">
+            <div class="pre-orbit" aria-hidden="true">
+                <span class="pre-ring pre-ring--1"><i class="pre-sat"></i></span>
+                <span class="pre-ring pre-ring--2"><i class="pre-sat"></i></span>
+                <span class="pre-ring pre-ring--3"><i class="pre-sat"></i></span>
+                <svg class="pre-mark"><use href="#sic-mark"/></svg>
+            </div>
+            <div class="pre-count" aria-hidden="true"><span id="pre-num">0</span><small>%</small></div>
+            <p class="pre-status" id="pre-status">Mapeando procesos</p>
+        </div>
+
+        <div class="pre-bar" aria-hidden="true"><span id="pre-bar"></span></div>
+    </div>
+
+    <div class="grain" aria-hidden="true"></div>
+    <div class="scroll-progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+    <!-- ============================================================
+         NAVEGACIÓN
+    ============================================================ -->
+    <header class="site-header" id="site-header">
+        <div class="nav-shell">
+            <a class="brand" href="#top" aria-label="SIC Sistemas Integrales y Consultoría, ir al inicio">
+                <svg class="brand-mark" aria-hidden="true"><use href="#sic-mark"/></svg>
+                <span class="brand-word">SIC</span>
+            </a>
+
+            <nav class="nav-links" aria-label="Principal">
+                <a href="#servicios">Servicios</a>
+                <a href="#metodologia">Metodología</a>
+                <a href="#sector">Sector inmobiliario</a>
+                <a href="#wishpms">WishPMS</a>
+                <a href="#faq">Preguntas</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="icon-btn" id="theme-toggle" type="button" aria-label="Cambiar a tema claro" aria-pressed="false">
+                    <i class="ph ph-sun" aria-hidden="true"></i>
+                </button>
+                <a class="btn btn-primary btn-sm nav-cta" href="#contacto" data-wa="hablar">
+                    <span class="btn-label">Hablar con un consultor</span>
+                </a>
+                <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+                    <i class="ph ph-list" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menú móvil -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <nav class="mobile-nav" aria-label="Menú móvil">
+            <a class="mobile-link" href="#servicios">Servicios</a>
+            <a class="mobile-link" href="#metodologia">Metodología</a>
+            <a class="mobile-link" href="#sector">Sector inmobiliario</a>
+            <a class="mobile-link" href="#wishpms">WishPMS</a>
+            <a class="mobile-link" href="#faq">Preguntas</a>
+        </nav>
+        <a class="btn btn-primary btn-lg mobile-cta" href="#contacto" data-wa="hablar">
+            <span class="btn-label">Hablar con un consultor</span>
+            <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+    </div>
+
+    <main id="main">
+
+        <!-- ============================================================
+             HERO: esfera de red 3D (módulos conectados) + copy
+        ============================================================ -->
+        <section class="hero" aria-labelledby="hero-title">
+            <canvas class="hero-bg-canvas" id="bg-canvas" aria-hidden="true"></canvas>
+            <div class="hero-aurora" aria-hidden="true"></div>
+
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow" id="hero-eyebrow">Sistemas Integrales y Consultoría</p>
+
+                    <h1 class="hero-title" id="hero-title">
+                        <span class="sr-only">Tu operación, en un solo sistema.</span>
+                        <span aria-hidden="true" class="hero-title-visual">
+                            <span class="line"><span class="line-in">Tu operación,</span></span>
+                            <span class="line"><span class="line-in">en un solo <span class="roll" id="roll"><span class="roll-word is-on">sistema</span><span class="roll-word">tablero</span><span class="roll-word">flujo</span><span class="roll-word">lugar</span></span></span></span>
+                        </span>
+                    </h1>
+
+                    <p class="hero-sub">Consultoría de procesos y software a la medida: obra, cobranza, ventas y hospedaje conectados en un solo lugar.</p>
+
+                    <div class="hero-actions">
+                        <a class="btn btn-primary btn-lg btn-magnetic" href="#contacto" data-wa="diagnostico">
+                            <span class="btn-label">Quiero mi diagnóstico gratis</span>
+                            <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-ghost btn-lg" href="#metodologia">
+                            <span class="btn-label">Ver cómo trabajamos</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual" aria-hidden="true">
+                    <canvas id="net-canvas"></canvas>
+                </div>
+                <p class="sr-only">Visualización animada de una red de módulos conectados: ERP, CRM, WishPMS, BI, APIs y documentos.</p>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             MARQUEE: capacidades (único marquee de la página)
+        ============================================================ -->
+        <section class="marquee" aria-label="Capacidades de SIC">
+            <div class="marquee-track" id="marquee-track">
+                <ul class="marquee-list">
+                    <li>Mapeo de procesos<i class="ph ph-asterisk" aria-hidden="true"></i></li>
+                    <li class="is-solid">ERP a la medida<i class="ph ph-asterisk" aria-hidden="true"></i></li>
+                    <li>CRM propio<i class="ph ph-asterisk" aria-hidden="true"></i></li>
+                    <li class="is-solid">Integraciones y APIs<i class="ph ph-asterisk" aria-hidden="true"></i></li>
+                    <li>Dashboards de BI<i class="ph ph-asterisk" aria-hidden="true"></i></li>
+                    <li class="is-solid">Gestión documental<i class="ph ph-asterisk" aria-hidden="true"></i></li>
+                    <li>Control de obra<i class="ph ph-asterisk" aria-hidden="true"></i></li>
+                    <li class="is-solid">WishPMS hotelero<i class="ph ph-asterisk" aria-hidden="true"></i></li>
+                </ul>
+                <ul class="marquee-list" aria-hidden="true">
+                    <li>Mapeo de procesos<i class="ph ph-asterisk"></i></li>
+                    <li class="is-solid">ERP a la medida<i class="ph ph-asterisk"></i></li>
+                    <li>CRM propio<i class="ph ph-asterisk"></i></li>
+                    <li class="is-solid">Integraciones y APIs<i class="ph ph-asterisk"></i></li>
+                    <li>Dashboards de BI<i class="ph ph-asterisk"></i></li>
+                    <li class="is-solid">Gestión documental<i class="ph ph-asterisk"></i></li>
+                    <li>Control de obra<i class="ph ph-asterisk"></i></li>
+                    <li class="is-solid">WishPMS hotelero<i class="ph ph-asterisk"></i></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             DECLARACIÓN: texto que se ilumina con el scroll
+        ============================================================ -->
+        <section class="statement" aria-label="Propuesta de valor">
+            <div class="container">
+                <p class="statement-text" data-words>Primero entendemos cómo trabajas. Después construimos el <strong class="hl">sistema que tu equipo sí querrá usar</strong>, conectado con todo lo que ya tienes.</p>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             DEL CAOS A LA FUENTE ÚNICA: escena fijada con scroll
+        ============================================================ -->
+        <section class="chaos" id="problema" aria-labelledby="chaos-title">
+            <div class="chaos-pin">
+                <div class="container chaos-grid">
+                    <div class="chaos-copy">
+                        <h2 class="h2" id="chaos-title" data-split>Cada área habla un idioma distinto.</h2>
+                        <p class="lead" data-reveal>Excel por aquí, WhatsApp por allá y un PDF que nadie encuentra. Lo unimos todo en una sola fuente de verdad.</p>
+
+                        <p class="chaos-status" aria-hidden="true" data-reveal>
+                            <span class="s-before">Operación dispersa</span>
+                            <span class="s-after">Fuente única de verdad</span>
+                        </p>
+
+                        <a class="btn btn-primary btn-lg btn-magnetic" href="#contacto" data-wa="ordenar" data-reveal>
+                            <span class="btn-label">Estoy listo para ordenar mi operación</span>
+                            <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <div class="chaos-stage" id="chaos-stage">
+                        <svg class="chaos-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                            <path d="M50 50 L50 12"   pathLength="1"/>
+                            <path d="M50 50 L72 23"   pathLength="1"/>
+                            <path d="M50 50 L81 50"   pathLength="1"/>
+                            <path d="M50 50 L72 77"   pathLength="1"/>
+                            <path d="M50 50 L50 88"   pathLength="1"/>
+                            <path d="M50 50 L28 77"   pathLength="1"/>
+                            <path d="M50 50 L19 50"   pathLength="1"/>
+                            <path d="M50 50 L28 23"   pathLength="1"/>
+                        </svg>
+
+                        <div class="chaos-hub-wrap" aria-hidden="true">
+                            <div class="chaos-hub">
+                                <svg class="hub-mark"><use href="#sic-mark"/></svg>
+                                <span>SIC</span>
+                            </div>
+                        </div>
+
+                        <ul class="chips" aria-label="Problemas habituales que resolvemos">
+                            <li class="chip" style="--x:50%;--y:12%"><span class="chip-in"><i class="ph ph-microsoft-excel-logo" aria-hidden="true"></i>Excel_final_v7</span></li>
+                            <li class="chip" style="--x:72%;--y:23%"><span class="chip-in"><i class="ph ph-chats-circle" aria-hidden="true"></i>Grupo de WhatsApp</span></li>
+                            <li class="chip" style="--x:81%;--y:50%"><span class="chip-in"><i class="ph ph-file-pdf" aria-hidden="true"></i>Contrato.pdf</span></li>
+                            <li class="chip" style="--x:72%;--y:77%"><span class="chip-in"><i class="ph ph-notebook" aria-hidden="true"></i>Libreta de obra</span></li>
+                            <li class="chip" style="--x:50%;--y:88%"><span class="chip-in"><i class="ph ph-hand-coins" aria-hidden="true"></i>Cobranza en papel</span></li>
+                            <li class="chip" style="--x:28%;--y:77%"><span class="chip-in"><i class="ph ph-chart-bar" aria-hidden="true"></i>Reporte tardío</span></li>
+                            <li class="chip" style="--x:19%;--y:50%"><span class="chip-in"><i class="ph ph-envelope-simple" aria-hidden="true"></i>Correo con adjuntos</span></li>
+                            <li class="chip" style="--x:28%;--y:23%"><span class="chip-in"><i class="ph ph-database" aria-hidden="true"></i>Inventario duplicado</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SERVICIOS: bento asimétrico (4 servicios, 4 celdas)
+        ============================================================ -->
+        <section class="services section" id="servicios" aria-labelledby="services-title">
+            <div class="container">
+                <header class="section-head">
+                    <p class="eyebrow" data-reveal>Qué hacemos</p>
+                    <h2 class="h2" id="services-title" data-split>Del proceso al sistema, sin saltos.</h2>
+                    <p class="lead" data-reveal>Empezamos entendiendo cómo trabajas y terminamos con software que tu equipo realmente usa.</p>
+                </header>
+
+                <div class="bento">
+                    <!-- 1. Procesos (gradiente aurora) -->
+                    <article class="tile tile--aurora spot" data-reveal>
+                        <div class="tile-body">
+                            <span class="tile-icon"><i class="ph ph-flow-arrow" aria-hidden="true"></i></span>
+                            <h3 class="h3">Análisis y definición de procesos</h3>
+                            <p>Entendemos cómo opera tu organización hoy y diseñamos procesos claros, eficientes y medibles.</p>
+                            <ul class="tags">
+                                <li>Mapa AS-IS y TO-BE</li>
+                                <li>Roles y responsabilidades</li>
+                                <li>KPIs recomendados</li>
+                                <li>Documentación estandarizada</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- 2. Desarrollo (componente vivo: ciclo de desarrollo) -->
+                    <article class="tile tile--surface spot" data-reveal>
+                        <div class="tile-body">
+                            <span class="tile-icon"><i class="ph ph-code" aria-hidden="true"></i></span>
+                            <h3 class="h3">Desarrollo de software basado en procesos</h3>
+                            <p>Convertimos tus procesos optimizados en sistemas reales, desde el diseño hasta el soporte.</p>
+                            <ol class="pipeline" id="pipeline" aria-hidden="true">
+                                <li class="is-on"><span>Diseño</span></li>
+                                <li><span>Desarrollo</span></li>
+                                <li><span>Pruebas</span></li>
+                                <li><span>Implementación</span></li>
+                                <li><span>Soporte</span></li>
+                            </ol>
+                        </div>
+                    </article>
+
+                    <!-- 3. ERP y CRM (foto) -->
+                    <article class="tile tile--photo spot" data-reveal>
+                        <img class="tile-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=75&w=1200&auto=format&fit=crop" alt="Pantalla con tableros de analítica de un sistema ERP y CRM" width="1200" height="800" loading="lazy" decoding="async">
+                        <div class="tile-scrim" aria-hidden="true"></div>
+                        <div class="tile-body">
+                            <span class="tile-icon"><i class="ph ph-plugs-connected" aria-hidden="true"></i></span>
+                            <h3 class="h3">ERP y CRM propios, integrados</h3>
+                            <p>Plataformas adaptadas al sector inmobiliario que se conectan con lo que ya usas.</p>
+                            <ul class="tags">
+                                <li>Gestión documental</li>
+                                <li>Plataformas administrativas</li>
+                                <li>Business Intelligence</li>
+                                <li>Apps de terceros</li>
+                                <li>APIs a la medida</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- 4. Implementación (foto) -->
+                    <article class="tile tile--photo spot" data-reveal>
+                        <img class="tile-img" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=75&w=1400&auto=format&fit=crop" alt="Equipo de trabajo recibiendo capacitación sobre un nuevo sistema" width="1400" height="900" loading="lazy" decoding="async">
+                        <div class="tile-scrim" aria-hidden="true"></div>
+                        <div class="tile-body">
+                            <span class="tile-icon"><i class="ph ph-rocket-launch" aria-hidden="true"></i></span>
+                            <h3 class="h3">Optimización e implementación</h3>
+                            <p>Estandarizamos tareas, reducimos errores y capacitamos a tu equipo para que el cambio se quede.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="section-cta" data-reveal>
+                    <a class="btn btn-primary btn-lg btn-magnetic" href="#contacto" data-wa="software">
+                        <span class="btn-label">Quiero mi software a la medida</span>
+                        <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             METODOLOGÍA: desplazamiento horizontal fijado (escritorio)
+        ============================================================ -->
+        <section class="method" id="metodologia" aria-labelledby="method-title">
+            <div class="method-pin" id="method-pin">
+                <div class="method-track" id="method-track">
+
+                    <div class="method-intro">
+                        <h2 class="h2" id="method-title">Acompañamiento 360°, de la idea al sistema en marcha.</h2>
+                        <p class="lead">Sin teorías complejas. Vamos contigo en cada etapa hasta que el software funcione en tu día a día.</p>
+                    </div>
+
+                    <article class="method-panel">
+                        <i class="ph ph-binoculars method-ghost" aria-hidden="true"></i>
+                        <h3 class="h3">Entender</h3>
+                        <p>Observamos cómo opera tu equipo hoy, detectamos cuellos de botella y documentamos el mapa AS-IS.</p>
+                        <ul class="tags"><li>Mapa AS-IS</li><li>Hallazgos</li></ul>
+                    </article>
+
+                    <article class="method-panel">
+                        <i class="ph ph-compass method-ghost" aria-hidden="true"></i>
+                        <h3 class="h3">Diseñar</h3>
+                        <p>Definimos el proceso ideal con roles, flujos e indicadores medibles antes de escribir una línea de código.</p>
+                        <ul class="tags"><li>Mapa TO-BE</li><li>KPIs</li><li>Roles</li></ul>
+                    </article>
+
+                    <article class="method-panel">
+                        <i class="ph ph-code method-ghost" aria-hidden="true"></i>
+                        <h3 class="h3">Construir</h3>
+                        <p>Desarrollamos tu ERP o CRM a la medida e integramos las herramientas que ya usas.</p>
+                        <ul class="tags"><li>Desarrollo ágil</li><li>Integraciones</li><li>APIs</li></ul>
+                    </article>
+
+                    <article class="method-panel">
+                        <i class="ph ph-rocket-launch method-ghost" aria-hidden="true"></i>
+                        <h3 class="h3">Implementar</h3>
+                        <p>Probamos, capacitamos a tu equipo y arrancamos con acompañamiento para que nadie se quede atrás.</p>
+                        <ul class="tags"><li>Pruebas</li><li>Capacitación</li><li>Arranque</li></ul>
+                    </article>
+
+                    <article class="method-panel">
+                        <i class="ph ph-chart-line-up method-ghost" aria-hidden="true"></i>
+                        <h3 class="h3">Acompañar</h3>
+                        <p>Damos soporte y evolucionamos el sistema contigo, con dashboards para decidir con datos en tiempo real.</p>
+                        <ul class="tags"><li>Soporte</li><li>Dashboards</li><li>Mejora continua</li></ul>
+                    </article>
+                </div>
+
+                <div class="method-progress" aria-hidden="true"><span id="method-progress"></span></div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTOR INMOBILIARIO: acordeón de imágenes
+        ============================================================ -->
+        <section class="sector section" id="sector" aria-labelledby="sector-title">
+            <div class="container">
+                <header class="section-head">
+                    <h2 class="h2" id="sector-title" data-split>Conocemos la cadena inmobiliaria desde adentro.</h2>
+                    <p class="lead" data-reveal>Cuatro eslabones, un mismo sistema: construcción, cobranza, administración y comercialización.</p>
+                </header>
+
+                <div class="panos" id="panos" data-reveal>
+                    <article class="pano is-active">
+                        <img class="pano-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=75&w=1200&auto=format&fit=crop" alt="Obra en construcción con trabajadores y estructura de acero" width="1200" height="800" loading="lazy" decoding="async">
+                        <div class="pano-scrim" aria-hidden="true"></div>
+                        <button class="pano-toggle" type="button" aria-expanded="true" aria-controls="pano-body-1">
+                            <i class="ph ph-hard-hat" aria-hidden="true"></i>
+                            <span class="pano-title">Construcción</span>
+                            <span class="pano-vert" aria-hidden="true">Construcción</span>
+                        </button>
+                        <div class="pano-body" id="pano-body-1">
+                            <p>Control de obra, inventarios, estimaciones y avances, presupuestos y reportes administrativos.</p>
+                        </div>
+                    </article>
+
+                    <article class="pano">
+                        <img class="pano-img" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=75&w=1200&auto=format&fit=crop" alt="Apretón de manos entre un asesor y un cliente al cerrar un acuerdo" width="1200" height="800" loading="lazy" decoding="async">
+                        <div class="pano-scrim" aria-hidden="true"></div>
+                        <button class="pano-toggle" type="button" aria-expanded="false" aria-controls="pano-body-2">
+                            <i class="ph ph-hand-coins" aria-hidden="true"></i>
+                            <span class="pano-title">Cobranza</span>
+                            <span class="pano-vert" aria-hidden="true">Cobranza</span>
+                        </button>
+                        <div class="pano-body" id="pano-body-2">
+                            <p>Gestión de cartera, comunicación con clientes y reportes administrativos al día.</p>
+                        </div>
+                    </article>
+
+                    <article class="pano">
+                        <img class="pano-img" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=75&w=1200&auto=format&fit=crop" alt="Torres corporativas de cristal vistas desde abajo" width="1200" height="800" loading="lazy" decoding="async">
+                        <div class="pano-scrim" aria-hidden="true"></div>
+                        <button class="pano-toggle" type="button" aria-expanded="false" aria-controls="pano-body-3">
+                            <i class="ph ph-bank" aria-hidden="true"></i>
+                            <span class="pano-title">Administración</span>
+                            <span class="pano-vert" aria-hidden="true">Administración</span>
+                        </button>
+                        <div class="pano-body" id="pano-body-3">
+                            <p>Gestión de compras y proveedores, tesorería y reportes en un solo lugar.</p>
+                        </div>
+                    </article>
+
+                    <article class="pano">
+                        <img class="pano-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=75&w=1200&auto=format&fit=crop" alt="Casa moderna de arquitectura contemporánea iluminada al atardecer" width="1200" height="800" loading="lazy" decoding="async">
+                        <div class="pano-scrim" aria-hidden="true"></div>
+                        <button class="pano-toggle" type="button" aria-expanded="false" aria-controls="pano-body-4">
+                            <i class="ph ph-buildings" aria-hidden="true"></i>
+                            <span class="pano-title">Comercialización</span>
+                            <span class="pano-vert" aria-hidden="true">Comercialización</span>
+                        </button>
+                        <div class="pano-body" id="pano-body-4">
+                            <p>Prospectos y clientes en tubería, control de inventario, contratos y seguimiento de postventa.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="section-cta" data-reveal>
+                    <a class="btn btn-primary btn-lg btn-magnetic" href="#contacto" data-wa="inmobiliario">
+                        <span class="btn-label">Clic aquí y cuéntanos tu caso</span>
+                        <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             WISHPMS: módulo hotelero con pestañas autoavanzables
+        ============================================================ -->
+        <section class="wish section" id="wishpms" aria-labelledby="wish-title">
+            <div class="wish-aurora" aria-hidden="true"></div>
+            <div class="container">
+                <header class="section-head">
+                    <p class="eyebrow" data-reveal>Nuevo módulo</p>
+                    <h2 class="h2" id="wish-title" data-split>WishPMS: reservas, canales y cobros en un solo lugar.</h2>
+                    <p class="lead" data-reveal>El módulo hotelero de SIC para alojamientos que quieren vender más y operar con control.</p>
+                </header>
+
+                <div class="wish-grid" id="wish" data-reveal>
+                    <div class="wish-tabs" role="tablist" aria-label="Módulos de WishPMS" aria-orientation="vertical">
+                        <button class="wish-tab is-active" role="tab" id="wtab-1" aria-selected="true" aria-controls="wpanel-1" type="button">
+                            <i class="ph ph-calendar-check" aria-hidden="true"></i><span>Reservas centralizadas</span><b class="wish-fill" aria-hidden="true"></b>
+                        </button>
+                        <button class="wish-tab" role="tab" id="wtab-2" aria-selected="false" aria-controls="wpanel-2" tabindex="-1" type="button">
+                            <i class="ph ph-plugs-connected" aria-hidden="true"></i><span>Channel Manager</span><b class="wish-fill" aria-hidden="true"></b>
+                        </button>
+                        <button class="wish-tab" role="tab" id="wtab-3" aria-selected="false" aria-controls="wpanel-3" tabindex="-1" type="button">
+                            <i class="ph ph-globe" aria-hidden="true"></i><span>Motor de reservas</span><b class="wish-fill" aria-hidden="true"></b>
+                        </button>
+                        <button class="wish-tab" role="tab" id="wtab-4" aria-selected="false" aria-controls="wpanel-4" tabindex="-1" type="button">
+                            <i class="ph ph-broom" aria-hidden="true"></i><span>Housekeeping</span><b class="wish-fill" aria-hidden="true"></b>
+                        </button>
+                        <button class="wish-tab" role="tab" id="wtab-5" aria-selected="false" aria-controls="wpanel-5" tabindex="-1" type="button">
+                            <i class="ph ph-cash-register" aria-hidden="true"></i><span>Punto de venta y pagos</span><b class="wish-fill" aria-hidden="true"></b>
+                        </button>
+                        <button class="wish-tab" role="tab" id="wtab-6" aria-selected="false" aria-controls="wpanel-6" tabindex="-1" type="button">
+                            <i class="ph ph-receipt" aria-hidden="true"></i><span>Facturación y reportes</span><b class="wish-fill" aria-hidden="true"></b>
+                        </button>
+                    </div>
+
+                    <div class="wish-stage">
+                        <div class="wish-media">
+                            <img class="wish-img is-active" src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=75&w=1400&auto=format&fit=crop" alt="Hotel con palmeras y alberca al atardecer" width="1400" height="900" loading="lazy" decoding="async">
+                            <img class="wish-img" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=75&w=1400&auto=format&fit=crop" alt="Terraza de un resort con alberca y camastros" width="1400" height="900" loading="lazy" decoding="async">
+                            <img class="wish-img" src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=75&w=1400&auto=format&fit=crop" alt="Alberca de un hotel tropical rodeado de vegetación" width="1400" height="900" loading="lazy" decoding="async">
+                            <img class="wish-img" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=75&w=1400&auto=format&fit=crop" alt="Habitación de hotel luminosa con cama y ventanales" width="1400" height="900" loading="lazy" decoding="async">
+                            <img class="wish-img" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=75&w=1400&auto=format&fit=crop" alt="Hotel con alberca iluminada durante la noche" width="1400" height="900" loading="lazy" decoding="async">
+                            <img class="wish-img" src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=75&w=1400&auto=format&fit=crop" alt="Villa blanca de arquitectura moderna con jardín" width="1400" height="900" loading="lazy" decoding="async">
+                        </div>
+
+                        <div class="wish-panels">
+                            <div class="wish-panel is-active" role="tabpanel" id="wpanel-1" aria-labelledby="wtab-1">
+                                <h3 class="h3">Reservas centralizadas</h3>
+                                <p>Todas tus reservas, habitaciones y disponibilidad en un calendario único, actualizado en tiempo real.</p>
+                            </div>
+                            <div class="wish-panel" role="tabpanel" id="wpanel-2" aria-labelledby="wtab-2" hidden>
+                                <h3 class="h3">Channel Manager</h3>
+                                <p>Conecta tus canales de venta y mantén tarifas y disponibilidad sincronizadas para evitar el overbooking.</p>
+                            </div>
+                            <div class="wish-panel" role="tabpanel" id="wpanel-3" aria-labelledby="wtab-3" hidden>
+                                <h3 class="h3">Motor de reservas</h3>
+                                <p>Recibe reservas directas desde tu propio sitio web y reduce tu dependencia de intermediarios.</p>
+                            </div>
+                            <div class="wish-panel" role="tabpanel" id="wpanel-4" aria-labelledby="wtab-4" hidden>
+                                <h3 class="h3">Housekeeping</h3>
+                                <p>Asigna y controla la limpieza de habitaciones desde el celular, con estados siempre al día.</p>
+                            </div>
+                            <div class="wish-panel" role="tabpanel" id="wpanel-5" aria-labelledby="wtab-5" hidden>
+                                <h3 class="h3">Punto de venta y pagos</h3>
+                                <p>Cobra restaurante, bar y tienda desde el mismo sistema y carga los consumos a la cuenta de la habitación.</p>
+                            </div>
+                            <div class="wish-panel" role="tabpanel" id="wpanel-6" aria-labelledby="wtab-6" hidden>
+                                <h3 class="h3">Facturación y reportes</h3>
+                                <p>Emite tus facturas desde la reserva y consulta ocupación e ingresos en reportes claros.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wish-foot" data-reveal>
+                    <ul class="lodging" aria-label="Tipos de alojamiento">
+                        <li><i class="ph ph-bed" aria-hidden="true"></i>Hoteles</li>
+                        <li><i class="ph ph-house-line" aria-hidden="true"></i>Hostales</li>
+                        <li><i class="ph ph-buildings" aria-hidden="true"></i>Apartahoteles</li>
+                        <li><i class="ph ph-tent" aria-hidden="true"></i>Glampings</li>
+                        <li><i class="ph ph-house" aria-hidden="true"></i>Cabañas y villas</li>
+                    </ul>
+                    <a class="btn btn-primary btn-lg btn-magnetic" href="#contacto" data-wa="wishpms">
+                        <span class="btn-label">Quiero ver WishPMS en acción</span>
+                        <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             BENEFICIOS: columna fija + bloques agrupados
+        ============================================================ -->
+        <section class="benefits section" id="beneficios" aria-labelledby="benefits-title">
+            <div class="container benefits-grid">
+                <div class="benefits-sticky">
+                    <h2 class="h2" id="benefits-title" data-split>Primero tu proceso. Después, la tecnología.</h2>
+                    <p class="lead" data-reveal>Un sistema que se adapta a tu operación, y no al revés.</p>
+
+                    <dl class="stats" data-reveal>
+                        <div class="stat">
+                            <dt>Eslabones de la cadena inmobiliaria</dt>
+                            <dd><span class="counter" data-target="4">0</span></dd>
+                        </div>
+                        <div class="stat">
+                            <dt>Acompañamiento de punta a punta</dt>
+                            <dd><span class="counter" data-target="360" data-suffix="°">0</span></dd>
+                        </div>
+                        <div class="stat">
+                            <dt>A la medida de tu operación</dt>
+                            <dd><span class="counter" data-target="100" data-suffix="%">0</span></dd>
+                        </div>
+                        <div class="stat">
+                            <dt>Fuente de verdad para toda la empresa</dt>
+                            <dd><span class="counter" data-target="1">0</span></dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div class="benefits-groups">
+                    <article class="bgroup bgroup--tint" data-reveal>
+                        <h3 class="h3">Operar mejor</h3>
+                        <ul class="blist">
+                            <li><i class="ph ph-lightning" aria-hidden="true"></i><div><strong>Mayor eficiencia operativa</strong><span>Procesos sin cuellos de botella que aceleran tu día a día.</span></div></li>
+                            <li><i class="ph ph-clipboard-text" aria-hidden="true"></i><div><strong>Procesos claros y estandarizados</strong><span>Roles definidos, flujos documentados y tareas sin ambigüedad.</span></div></li>
+                            <li><i class="ph ph-shield-check" aria-hidden="true"></i><div><strong>Menos errores</strong><span>Controles integrados que evitan retrabajos y pérdida de información.</span></div></li>
+                        </ul>
+                    </article>
+
+                    <article class="bgroup" data-reveal>
+                        <h3 class="h3">Tener el control</h3>
+                        <ul class="blist">
+                            <li><i class="ph ph-eye" aria-hidden="true"></i><div><strong>Visibilidad en tiempo real</strong><span>Dashboards e indicadores para decidir con datos y no con intuición.</span></div></li>
+                            <li><i class="ph ph-stack" aria-hidden="true"></i><div><strong>Información centralizada</strong><span>Un solo punto de verdad, sin datos duplicados entre áreas.</span></div></li>
+                            <li><i class="ph ph-tree-structure" aria-hidden="true"></i><div><strong>Coordinación entre áreas</strong><span>Flujos conectados que mejoran la comunicación de todo el equipo.</span></div></li>
+                        </ul>
+                    </article>
+
+                    <article class="bgroup bgroup--outline" data-reveal>
+                        <h3 class="h3">Crecer sin fricción</h3>
+                        <ul class="blist">
+                            <li><i class="ph ph-table" aria-hidden="true"></i><div><strong>Digitalización real</strong><span>Más allá de Excel: sistemas que sí automatizan tu operación.</span></div></li>
+                            <li><i class="ph ph-trend-up" aria-hidden="true"></i><div><strong>Escalabilidad con trazabilidad</strong><span>El sistema crece contigo sin perder el control de lo que pasa.</span></div></li>
+                            <li><i class="ph ph-sliders-horizontal" aria-hidden="true"></i><div><strong>Software 100% a tu medida</strong><span>Solo las funciones que necesitas, sin módulos de relleno.</span></div></li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             FAQ: acordeón centrado
+        ============================================================ -->
+        <section class="faq section" id="faq" aria-labelledby="faq-title">
+            <div class="container container--narrow">
+                <header class="section-head section-head--center">
+                    <h2 class="h2" id="faq-title" data-split>Lo que casi todos preguntan antes de empezar.</h2>
+                </header>
+
+                <div class="faq-list" data-reveal>
+                    <div class="faq-item is-open">
+                        <h3><button class="faq-q" type="button" aria-expanded="true" aria-controls="faq-a-1" id="faq-q-1"><span>¿Qué hace SIC?</span><i class="ph ph-plus" aria-hidden="true"></i></button></h3>
+                        <div class="faq-a" id="faq-a-1" role="region" aria-labelledby="faq-q-1"><div><p>Somos una consultoría que combina análisis de procesos con desarrollo de software. Mapeamos cómo opera tu empresa, optimizamos los procesos y los convertimos en sistemas a la medida.</p></div></div>
+                    </div>
+                    <div class="faq-item">
+                        <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-2" id="faq-q-2"><span>¿Por qué empiezan por los procesos y no por el software?</span><i class="ph ph-plus" aria-hidden="true"></i></button></h3>
+                        <div class="faq-a" id="faq-a-2" role="region" aria-labelledby="faq-q-2"><div><p>Porque automatizar un proceso confuso solo multiplica el desorden. Primero lo ordenamos y lo medimos; después la tecnología se construye sobre bases sólidas.</p></div></div>
+                    </div>
+                    <div class="faq-item">
+                        <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-3" id="faq-q-3"><span>¿Venden un sistema estándar o lo hacen a la medida?</span><i class="ph ph-plus" aria-hidden="true"></i></button></h3>
+                        <div class="faq-a" id="faq-a-3" role="region" aria-labelledby="faq-q-3"><div><p>Desarrollamos ERP y CRM propios y los adaptamos a tu operación. Solo incluimos las funciones que necesitas, sin módulos de relleno.</p></div></div>
+                    </div>
+                    <div class="faq-item">
+                        <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-4" id="faq-q-4"><span>¿Se pueden conectar con las herramientas que ya usamos?</span><i class="ph ph-plus" aria-hidden="true"></i></button></h3>
+                        <div class="faq-a" id="faq-a-4" role="region" aria-labelledby="faq-q-4"><div><p>Sí. Integramos gestión documental, plataformas administrativas, herramientas de BI y aplicaciones de terceros mediante APIs existentes o personalizadas.</p></div></div>
+                    </div>
+                    <div class="faq-item">
+                        <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-5" id="faq-q-5"><span>¿Solo trabajan con el sector inmobiliario?</span><i class="ph ph-plus" aria-hidden="true"></i></button></h3>
+                        <div class="faq-a" id="faq-a-5" role="region" aria-labelledby="faq-q-5"><div><p>Nuestra especialidad es la cadena inmobiliaria: construcción, cobranza, administración y comercialización. También apoyamos a empresas con procesos complejos en otros giros.</p></div></div>
+                    </div>
+                    <div class="faq-item">
+                        <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-6" id="faq-q-6"><span>¿Qué es WishPMS y para quién es?</span><i class="ph ph-plus" aria-hidden="true"></i></button></h3>
+                        <div class="faq-a" id="faq-a-6" role="region" aria-labelledby="faq-q-6"><div><p>WishPMS es nuestro módulo hotelero para gestionar reservas, canales de venta, pagos y operación. Está pensado para hoteles, hostales, apartahoteles, glampings y cabañas.</p></div></div>
+                    </div>
+                    <div class="faq-item">
+                        <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-7" id="faq-q-7"><span>¿Cómo empezamos?</span><i class="ph ph-plus" aria-hidden="true"></i></button></h3>
+                        <div class="faq-a" id="faq-a-7" role="region" aria-labelledby="faq-q-7"><div><p>Con una llamada de diagnóstico sin compromiso. Nos cuentas cómo operas hoy y te decimos con claridad si podemos ayudarte y por dónde comenzar.</p></div></div>
+                    </div>
+                </div>
+
+                <div class="section-cta" data-reveal>
+                    <a class="btn btn-ghost btn-lg" href="#contacto" data-wa="faq">
+                        <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+                        <span class="btn-label">Clic aquí y resuelve tu duda por WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             CONTACTO: formulario que redirige a WhatsApp
+        ============================================================ -->
+        <section class="contact section" id="contacto" aria-labelledby="contact-title">
+            <div class="container">
+                <div class="contact-card">
+                    <div class="contact-aurora" aria-hidden="true"></div>
+
+                    <div class="contact-copy">
+                        <p class="eyebrow" data-reveal>Agenda tu diagnóstico</p>
+                        <h2 class="h2" id="contact-title" data-split>Cuéntanos cómo operas hoy y diseñamos cómo debería funcionar.</h2>
+                        <p class="lead" data-reveal>Una llamada de diagnóstico, sin compromiso, basta para saber si podemos ayudarte.</p>
+
+                        <ul class="assurances" data-reveal>
+                            <li><i class="ph ph-whatsapp-logo" aria-hidden="true"></i>Te respondemos directo por WhatsApp</li>
+                            <li><i class="ph ph-handshake" aria-hidden="true"></i>Sin compromiso inicial</li>
+                            <li><i class="ph ph-user-focus" aria-hidden="true"></i>Atención de consultores, no de un bot</li>
+                            <li><i class="ph ph-map-pin" aria-hidden="true"></i>Guadalajara, Jalisco, México</li>
+                        </ul>
+                    </div>
+
+                    <form class="contact-form" id="contact-form" novalidate data-reveal>
+                        <div class="field">
+                            <label for="f-name">Tu nombre</label>
+                            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name" placeholder="Ej. Mariana Ortega">
+                            <p class="field-error" id="e-name" role="alert"></p>
+                        </div>
+
+                        <div class="field">
+                            <label for="f-company">Empresa <span class="opt">(opcional)</span></label>
+                            <input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Ej. Desarrollos del Pacífico">
+                        </div>
+
+                        <div class="field">
+                            <label for="f-interest">¿Qué te interesa?</label>
+                            <div class="select-wrap">
+                                <select id="f-interest" name="interest" required aria-describedby="e-interest">
+                                    <option value="" selected disabled>Elige una opción</option>
+                                    <option>Análisis y definición de procesos</option>
+                                    <option>Software a la medida</option>
+                                    <option>ERP o CRM para mi empresa</option>
+                                    <option>Integraciones entre mis sistemas</option>
+                                    <option>WishPMS para mi hotel</option>
+                                    <option>Aún no lo sé, quiero un diagnóstico</option>
+                                </select>
+                                <i class="ph ph-caret-down" aria-hidden="true"></i>
+                            </div>
+                            <p class="field-error" id="e-interest" role="alert"></p>
+                        </div>
+
+                        <div class="field">
+                            <label for="f-time">¿Cuándo te viene mejor la llamada?</label>
+                            <div class="select-wrap">
+                                <select id="f-time" name="time">
+                                    <option>Me da igual, adáptense a mi agenda</option>
+                                    <option>Por la mañana</option>
+                                    <option>Por la tarde</option>
+                                </select>
+                                <i class="ph ph-caret-down" aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="f-msg">Cuéntanos tu reto <span class="opt">(opcional)</span></label>
+                            <textarea id="f-msg" name="message" rows="3" placeholder="Ej. Llevamos la cobranza en Excel y necesitamos verla en tiempo real."></textarea>
+                        </div>
+
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">
+                            <span class="btn-label">Estoy listo, enviar por WhatsApp</span>
+                            <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+                        </button>
+                        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a class="brand" href="#top" aria-label="SIC, ir al inicio">
+                        <svg class="brand-mark" aria-hidden="true"><use href="#sic-mark"/></svg>
+                        <span class="brand-word">SIC</span>
+                    </a>
+                    <p>Consultoría de procesos y software a la medida para empresas que quieren operar con claridad y control.</p>
+                </div>
+
+                <nav class="footer-col" aria-label="Navegación del pie">
+                    <h2 class="footer-h">Explorar</h2>
+                    <a href="#servicios">Servicios</a>
+                    <a href="#metodologia">Metodología</a>
+                    <a href="#sector">Sector inmobiliario</a>
+                    <a href="#wishpms">WishPMS</a>
+                    <a href="#faq">Preguntas frecuentes</a>
+                </nav>
+
+                <div class="footer-col">
+                    <h2 class="footer-h">Contacto</h2>
+                    <a href="#contacto" data-wa="hablar"><i class="ph ph-whatsapp-logo" aria-hidden="true"></i>Escríbenos por WhatsApp</a>
+                    <p><i class="ph ph-map-pin" aria-hidden="true"></i>Guadalajara, Jalisco, México</p>
+                </div>
+            </div>
+
+            <div class="footer-word" aria-hidden="true">SIC</div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="year">2026</span> SIC Sistemas Integrales y Consultoría. Todos los derechos reservados.</p>
+                <a href="#top" class="to-top">Volver arriba<i class="ph ph-arrow-up" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a class="wa-float" href="#contacto" data-wa="flotante" aria-label="Escribir por WhatsApp">
+        <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i>
+        <span class="wa-tip">¿Hablamos?</span>
+    </a>
+
+    <!-- Librerías: GSAP + ScrollTrigger y Lenis (scroll suave). Si fallan, el sitio sigue funcionando sin animaciones -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
